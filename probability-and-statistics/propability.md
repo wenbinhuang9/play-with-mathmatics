@@ -31,16 +31,19 @@ But how we interpret the independent here?
 
 Actually, conditional probability can be very well used to express the probabilistic reasoning.
 
-P(X|Y), we can interpret this to be that if Y observed, what is the probability of X, if we know the fact Y, what is the probability of X, or if we know the evidence of Y, what is the probability of Y.
+P(X|Y), we can interpret this to be that if Y observed, what is the probability of X, if we know the fact Y, what is the probability of X, or if we know the evidence of Y, what is the probability of X.
 
-So conditional probability is widely used in the life.
 
+So conditional probability is widely used in the life, it can be used to reason.  Actually, when we observe y, we can make a decision about X by getting the distribution of P(X|y). 
 
 Here is the defintion of conditional probablility.
 
 P(X | Y) = P(XY)/P(Y)
 
-If X and Y are independent we can get P(X|Y) = P(X), right now we can interpret what is independent. Even though we observe Y, P(X) is still unchanged. So the information of Y we get can not influence the P(X), so X and Y is independent. 
+If X and Y are independent we can get P(X|Y) = P(X), right now we can interpret what is independent. Even though we observe Y, P(X) is still unchanged. So the information of Y we get can not influence the P(X), so X and Y is independent.  We can also get insight about the independent from the perspective of division.
+
+If we let k =  P(X|y)/P(X), if k is closed to 1, which means X, Y is closed to independent. if k is going to a very big number , which means X and Y is related, in other words, the happenning of Y will lead to the happening of X.If k is closed to 0, which means the happening Y leads to the disperance of X. 
+   
 
 Actually, the definition of conditional probability is very interesting.
 
@@ -51,6 +54,29 @@ We can get P(XY) = P(Y)P(X|Y)
 Further, we can get P(X1X2X3) = P(X1|X2X3)P(X2X3) = P(X1|X2X3)P(X2|X3)P(X3), this is a chaining rule. 
 
 More generally, we can get P(X1X2..XK)= P(X1|X2 ...XK)P(X2|X3 .. Xk) ... P(Xk)
+
+
+If Xi and Xj is mutually independent, then we can get
+
+P(X1X2X3 .. Xk) = P(X1) P(X2) ... P(Xk)
+
+P(x1) = P(x1y1) + P(x1y2) + ... + P(x1yk) = P(y1)P(x1|y1) + P(y2)P(x1|y2) ... P(yk) P(x1|yk)
+
+Then , we can also get the famous baysian formula.
+
+P(X|Y) = P(XY)/ P(Y)
+
+P(Y|X) = P(YX)/ P(X)
+
+As P(XY) = P(YX)
+
+so we get P(X|Y) = P(Y|X) P(X) / P(Y)
+
+Then P(X|Y) = (P(Y|X)/P(Y)) P(X)
+
+But how we interpret this formula. Firstly, We just consider the most simple case,  we give X a distribution from our objective experience. Then, we observe the information from the Y, when we observe Y, the Y will helps to adjust the probabilty of X, with more Y observed,  we have more confidence about what X will happen. (Sounds like a very confused interpretation)
+
+
 
 
 
