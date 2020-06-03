@@ -228,5 +228,27 @@ As for durability, it can be implented together with atomicity by using log, so 
 
 As for isolation, this is very complex implementation of transaction, we need cucurrency control of mutilple concurrent transactions, so we need concurrent control system. 
 
-Some schedule of transaction can cause a bad result, while some scheduler of transaction can produce a good result. Let's consider the simplest one, if the transaction is implemented by 
+Some schedule of transaction can cause a bad result, while some scheduler of transaction can produce a good result. Let's consider the simplest one, if the transaction is executed serially, we can know that it always produce a good result. And such schedule , we call it serial schedule.
+
+We can use serial schedule to ensure the correctness of concurrent transction, but it is inefficient sometimes, so we need to increase the parallel by using other equivalent schedule. 
+
+Now we simplify the database operation, each database operation can be divided into two actomic operations, that is read and write on a specific attribute, denoted by write(Q), read(Q). 
+
+We consider four conditions of two concurrent transctions T1, and T2
+- read(T1, Q), read(T2, Q)
+- read(T1, Q), write(T2, Q)
+- write(T1, Q), read(T2, Q)
+- write(T1, Q), wirte(T2, Q)
+
+It is easy to find the we don't need to care about the order of read(T1, Q) and read(T2, Q) , but we need to care about the rest of three with at least one write. 
+
+For a scheduler S, we can swap two non-conflict instructions of T1 and T2 to get S', we call S' is conflict schedule of S, which also means S' is equivalent to S. If S is equivalent to  serial schedule, we call such a schedule S is conflict serilizability (The definition of conflict is very strange here )
+
+
+How we can detect whether a schedule is conflic serilizability. 
+
+We can define op(Ti) -> op(Tj), where op is either a read or write operation, the execution of op(Ti) occurs before the execution of op(Tj).  So we can draw a direct graph with arrow from op(Ti) to op(Tj)
+
+We can draw such a direct graph from dependency, if we can't find a cyclic in the graph, we can ensure that the schedule is conflict serilizability. And we can also use topological sort to get the correct schedule from the graph. Further, we can use direct schedule to execute the transaction parallelly.
+
 
