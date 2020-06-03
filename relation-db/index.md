@@ -14,3 +14,25 @@ As for the other classification, there are sparse index and dense index.  Each s
 There is a trade-off between space-efficiency and query performance for sparse index and dense index. 
 
 ## Index update 
+
+We should maintain index when search key is updated. As updatation can be implicitely implemented by insertion and deletion, So I only talk about insertion and deletion.
+
+### Insertion for dense index
+
+- If the serach key not exists, just insert it
+- If the search key exists,  why here has two condition, I can't understand here ? 
+
+
+### insertion for sparse index 
+Always focus on the first record of a block. 
+
+When a first record of a block is updated. update to index.
+
+When a new block is created, insert it to index. 
+
+### deletion for dense index 
+
+Just mark it to be deleted? 
+ 
+
+### deletion for sparse index 
