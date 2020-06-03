@@ -251,4 +251,34 @@ We can define op(Ti) -> op(Tj), where op is either a read or write operation, th
 
 We can draw such a direct graph from dependency, if we can't find a cyclic in the graph, we can ensure that the schedule is conflict serilizability. And we can also use topological sort to get the correct schedule from the graph. Further, we can use direct schedule to execute the transaction parallelly.
 
+The implementation of isolation is that  we can use lock, there are multiple kinds of lock we can use.
+
+There are majorly two locks
+
+1. share lock , allow lock to be shared for read
+2. exclusive lock , excusively not allow lock to be shared .
+
+Another lock is used in transaction is  two-phase lock. What does two-phase lock mean? 
+
+1. The first phase is lock growing stage, continuously request the locks
+2. The sec phase is lock shrinking stage, continuously releasing the locks.
+
+From this defintion, we can know that it is not allowed to get a lock , release the lock, then get another lock then release the lock.  
+
+And two-phase lock can be used to guaranttee to produce a correct isolation. 
+
+But what's the problem of two-phase lock ? It may cause the dead lock , so we need to detect the deadlock and then solve the dealock. And the share lock may also cause starvation. 
+
+How to solve the problem of deadlock ? ANd how to solve the starvation. 
+
+There are other implementations of lock.
+- based on multiple verions of snapshot, each transaction has its own snapshot, and update on its own version, if there is conflict of writing , we should rollback some transacitons.
+- based on timestamp, maintain the timestamp on latest read and write, we may detect the conflict?
+- and what ???? 
+
+I need to get to further understanding of concurrent control of database.
+
+
+
+
 
