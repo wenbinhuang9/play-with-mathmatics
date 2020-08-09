@@ -96,3 +96,7 @@ HEAD is used to record the latest commit object of current branch.  It is useful
 ### REF
 
 Reference is used to bind the branch name to a commit object, so REF is nothong more than a pointer. We can manage REF based on the REF. 
+
+### COPRESSION 
+
+ The git also designs the tech, which is packfile, used to compress the file. It is really necessary because the git repo will holds large files. 
